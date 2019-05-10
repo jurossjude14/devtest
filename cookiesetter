@@ -32,13 +32,18 @@ function getCookie(cname) {
         var customerHomeAddress =  document.getElementById("stateHid").value;
         if (customerHomeAddress != "" && customerHomeAddress != null) {
         setCookie("homeaddress",customerHomeAddress,1); }
-
+        //document.getElementById("clearbox_btn").style.display = "block";
             
     }
     
-    window.onload = function() { document.getElementById("clearbox_btn").style.display = "block";}
     window.onunload = function() { WriteCookie2();}
 
-
+    window.onload = function() { 
+        var customerHomeAddress2 =  document.getElementById("stateHid").value;
+        if (customerHomeAddress2 != "") {
+            document.getElementById("clearbox_btn").style.display = "block";
+            document.getElementById("customer_homeAddress").setAttribute("disabled", "disabled");
+        }
+    }
         
 </script>
