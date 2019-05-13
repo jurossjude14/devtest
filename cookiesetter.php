@@ -47,3 +47,56 @@ function getCookie(cname) {
     }
         
 </script>
+
+<?php 
+
+function cscookie($cookivar = null){
+    if(!empty($cookivar)) {
+      if(isset($_COOKIE["$cookivar"])) { 
+        echo $_COOKIE["$cookivar"]; }
+    } } 
+
+ 
+function checkeraddon($valuedata){
+
+  if($valuedata) {
+
+      if($valuedata=="disableinput") {
+        if (isset($_COOKIE["homeaddress"])){
+           echo "disabled ='disabled'";
+        }
+      }
+
+      if($valuedata=="cssblock") {
+        if (isset($_COOKIE["homeaddress"])){
+           echo "display:block;";
+        }
+      }}
+
+  else {
+     return null;
+  }
+
+
+
+}
+
+  ?>
+
+
+
+
+    <form name="form1" method="POST" action="">
+        <input type="hidden" id="stateHid2" name="postalcode" value="<?php cscookie("homeaddress");?>" style="<?php checkeraddon("cssblock"); ?>">
+        <table width="75%" border="0">
+
+            <tr> 
+                <td width="10%">Full Address</td>
+                <td><input type="text" id="stateHid" name="home_address" value="<?php cscookie("homeaddress");?>" <?php checkeraddon("disableinput"); ?>></td>
+            </tr>
+            <tr> 
+                <td>&nbsp;</td>
+                <td><input type="submit" name="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
